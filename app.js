@@ -15,3 +15,5 @@ const parent = React.createElement(
 //   const heading = React.createElement("h1", { id: "heading" }, "hellow from react D");
 const rooter = ReactDOM.createRoot(document.getElementById("root"));
 rooter.render(parent);
+
+// hii react
