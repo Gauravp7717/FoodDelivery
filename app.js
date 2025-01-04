@@ -1,19 +1,18 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const Jsxhead =()=> (<h1 id="heading">namastey from react </h1>);
 
 
-
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
-    [React.createElement("h1", {}, "hii everyone from react"), React.createElement("h2", {}, "hii everyone from react two"),]
-  )
-);
-
-
-//   const heading = React.createElement("h1", { id: "heading" }, "hellow from react D");
-const rooter = ReactDOM.createRoot(document.getElementById("root"));
-rooter.render(parent);
-
-// hii react
+const Heading = ()=>{
+  return<>
+  <div id="head">
+    <Jsxhead />
+    <h1>
+      dg gaurav 7717
+    </h1>
+  </div>
+  </>
+}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Heading />);
