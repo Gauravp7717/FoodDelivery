@@ -6,86 +6,223 @@ html {
 
 body {
   font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light background for better contrast */
+
   /* padding-top:200px;  */
 }
 
 /* header section */
 .header {
+  height: 100px;
   display: flex;
   justify-content: space-between;
-  width: auto;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff; /* Matches card theme */
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.1) 0px 1px 3px;
   position: sticky;
-
-  border-radius: 10px;
-  box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 34px 30px,
-    rgba(0, 0, 0, 0.12) 0px -12px 15px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  top: 0;
+  z-index: 10; /* Ensures the navbar stays above other elements */
 }
 
-img {
-  width: 115px;
-  margin: 5px;
-  padding-left: 15px;
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
+.logo img {
+  width: 120px; /* Adjust logo size */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for a polished look */
+}
+
+/* Navigation items container */
 .nav-items > ul {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.nav-items > ul > li {
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
-  padding: 0px 20px;
-  font-size: 24px;
+  justify-content: flex-end;
+  gap: 60px; /* Space between nav items */
   list-style: none;
-  cursor: pointer;
-  margin-top: 38px;
+  margin: 0;
+  padding: 0;
 }
 
+/* Individual nav items */
+.nav-items > ul > li {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333; /* Subtle text color */
+  text-transform: capitalize; /* Uniform text style */
+  cursor: pointer;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* Hover effect for nav items */
 .nav-items > ul > li:hover {
-  font-weight: 700;
+  color: #2e7d32; /* Green hover color to match res-cards theme */
+  font-weight: 700; /* Bold on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack logo and nav items on smaller screens */
+    align-items: center;
+    padding: 15px;
+  }
+
+  .nav-items > ul {
+    flex-direction: column; /* Stack nav items */
+    gap: 10px; /* Reduced spacing */
+  }
+
+  .nav-items > ul > li {
+    font-size: 16px; /* Slightly smaller font size for mobile */
+  }
 }
 
 /* body  */
 
+/* Container for restaurant cards */
 .res-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background for better contrast */
 }
 
+/* Individual restaurant card styling */
 .res-cards {
-  padding: 5px;
   width: 250px;
-  height: 360px;
+  padding: 10px;
   border-radius: 12px;
+  background-color: #ffffff; /* Clean white background */
   text-align: center;
-  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.1) 0px 1px 3px; /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Prevent content overflow */
+  border: 1px solid #e0e0e0; /* Light border for structure */
 }
 
+/* Image inside the card */
+.res-cards img {
+  width: 100%; /* Fit the image to card width */
+  height: 160px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensure proper aspect ratio without distortion */
+  border-radius: 10px; /* Slightly rounded corners */
+}
+
+/* Hover effect for card */
 .res-cards:hover {
-  border: 1px solid black;
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 20px, rgba(0, 0, 0, 0.15) 0px 4px 6px; /* Enhanced shadow on hover */
+  border-color: #000; /* Darker border on hover */
   cursor: pointer;
-  box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 34px 30px,
-    rgba(0, 0, 0, 0.12) 0px -12px 15px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  transition: opacity 1s ease, filter 1s ease;
 }
 
-.search {
-  padding: 25px;
+/* Restaurant name */
+.res-cards h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333333; /* Dark color for visibility */
+  margin: 10px 0 5px;
+}
+
+/* Cuisines */
+.res-cards h4:first-of-type {
+  font-size: 1rem;
+  color: #555555; /* Subtle color */
+  margin: 5px 0;
+  font-style: italic;
+}
+
+/* Rating and cost */
+.res-cards h4 {
+  font-size: 0.9rem;
+  color: #666666; /* Muted text color */
+  margin: 3px 0;
+}
+
+.res-cards h4:last-of-type {
+  font-weight: bold;
+  color: #2e7d32; /* Green for emphasis on cost */
 }
 
 .res-logo {
   width: 100%;
 }
 
+/* button for top rated resturant  */
 .filter-btn {
-  padding: 10px;
-  margin: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  margin-top: 20px;
+  border-radius: 12px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px;
+}
+
+.filter-btn:hover {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px;
+}
+
+.filter-btn:focus {
+  outline: none;
+}
+
+.filter-btn:active {
+  background-color: #45a049;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 8px;
+}
+
+/* Container for shimmer effect */
+.Shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f0f0f0; /* Light grey background */
+}
+
+/* Individual shimmer cards */
+.Shimmer-Cards {
+  width: 250px;
+  height: 360px;
+  background: linear-gradient(
+    to right,
+    #e0e0e0 25%,
+    #f0f0f0 50%,
+    #e0e0e0 75%
+  ); /* Gradient shimmer effect */
+  border-radius: 12px;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* login - logout btn */
+
+.log-btn {
+  cursor: pointer;
 }
