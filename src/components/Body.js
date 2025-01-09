@@ -7,6 +7,9 @@ const Body = () => {
   // a local state variable
 
   const [listOFres, setList] = useState([]);
+  const [filterRes, setfilter] = useState("");
+
+  const [searchText, setSearch] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -22,6 +25,9 @@ const Body = () => {
     setList(
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setfilter(
+      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return listOFres.length === 0 ? (
@@ -29,6 +35,31 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            className="search-box"
+            placeholder="Enter your Choice"
+            value={searchText}
+            onChange={(data) => {
+              setSearch(data.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              // Filter the restaurant list based on search text
+              const filteredresList = listOFres.filter((res) =>
+                res?.info?.name
+                  ?.toLowerCase()
+                  .includes(searchText.toLowerCase())
+              );
+
+              setfilter(filteredresList);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -43,7 +74,7 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {listOFres.map((restaurant, index) => (
+        {filterRes.map((restaurant, index) => (
           <ResCards key={restaurant.info.id || index} resName={restaurant} />
         ))}
       </div>
