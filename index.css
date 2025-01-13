@@ -3,6 +3,13 @@ html {
   width: 100%;
   /* overflow: hidden; */
 }
+.no-underline {
+  text-decoration: none;
+}
+.underline {
+  text-decoration: none;
+  color: #000;
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -53,6 +60,7 @@ body {
 .nav-items > ul > li {
   font-size: 18px;
   font-weight: 500;
+  margin: 2px;
   color: #333333; /* Subtle text color */
   text-transform: capitalize; /* Uniform text style */
   cursor: pointer;
@@ -228,9 +236,25 @@ body {
 }
 
 /* login - logout btn */
-
 .log-btn {
   cursor: pointer;
+  background-color: #007bff; /* Blue background */
+  color: #fff; /* White text */
+  padding: 10px 20px; /* Add padding for better spacing */
+  font-size: 16px; /* Font size for readability */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.log-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.log-btn:active {
+  background-color: #003f7f; /* Even darker blue when clicked */
+  transform: scale(0.95); /* Slightly decrease size when clicked */
 }
 
 /* Container for Search */
@@ -289,4 +313,169 @@ body {
 .search-btn:active {
   background-color: #0056b3;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 8px;
+}
+
+/* menu page */
+/* Container */
+.menu-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures consistent height */
+}
+
+/* Restaurant Info */
+.restaurant-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.restaurant-info h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.restaurant-info p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Top Picks */
+.top-picks {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.top-picks h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Menu Items Grid */
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: stretch; /* Ensures all items stretch equally */
+}
+
+/* Individual Menu Item */
+.menu-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures the button stays at the bottom */
+  height: 100%; /* Takes full height within grid cell */
+}
+
+/* Image Style */
+.menu-item-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Menu Item Details */
+.menu-item-details h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.menu-item-details p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Add to Cart Button */
+.menu-item button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 20px; /* Adjust padding for better visual */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: auto; /* Ensures the button is pushed to the bottom of the card */
+  width: 100%; /* Makes the button full-width */
+  text-align: center; /* Centers the text within the button */
+}
+
+/* Button Hover Effect */
+.menu-item button:hover {
+  background-color: #f57c00;
+}
+
+/* Veg and Non-Veg Symbols */
+.veg-symbol {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.veg {
+  background-color: green; /* Green for Veg */
+}
+
+.non-veg {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-color: red; /* Equilateral triangle */
+}
+
+/* Filter Buttons Container */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Even spacing between buttons */
+  margin: 20px 0; /* Space around the filter buttons */
+}
+
+/* Individual Buttons */
+.filter-buttons button {
+  background: linear-gradient(
+    135deg,
+    #007bff,
+    #0056b3
+  ); /* Gradient background */
+  color: #fff; /* White text */
+  border: 2px solid transparent; /* Initial transparent border */
+  padding: 12px 25px; /* Slightly larger padding for a premium look */
+  font-size: 16px; /* Readable font size */
+  font-weight: 500; /* Medium font weight */
+  border-radius: 25px; /* Fully rounded pill-like buttons */
+  cursor: pointer; /* Pointer on hover */
+  transition: all 0.3s ease; /* Smooth transition effects */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover Effect */
+.filter-buttons button:hover {
+  background: linear-gradient(
+    135deg,
+    #0056b3,
+    #003f7f
+  ); /* Darker gradient on hover */
+  border-color: #ffffff; /* Highlight border on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Elevated shadow */
+  transform: translateY(-2px); /* Slightly raise the button */
+}
+
+/* Active State (When Clicking) */
+.filter-buttons button:active {
+  transform: translateY(2px); /* Press-down effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
 }
