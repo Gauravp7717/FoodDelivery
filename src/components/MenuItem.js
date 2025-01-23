@@ -1,11 +1,10 @@
-// MenuItem.js
 import React from "react";
 import { MENU_URL } from "../utils/constants";
 
-const MenuItem = ({ item }) => {
-  const { name, price, imageId, itemAttribute } = item.card.info;
-  const vegClassifier = itemAttribute?.vegClassifier; // Veg or Non-Veg classifier
-  const vegClass = vegClassifier === "VEG" ? "veg" : "non-veg"; // Apply styles based on classifier
+const MenuItem = ({ item, addToCart }) => {
+  const { name, price, imageId, itemAttribute, id } = item.card.info; // Extract id
+  const vegClassifier = itemAttribute?.vegClassifier;
+  const vegClass = vegClassifier === "VEG" ? "veg" : "non-veg";
 
   return (
     <div className="menu-item">
@@ -15,7 +14,7 @@ const MenuItem = ({ item }) => {
       <div className="menu-item-details">
         <h3>{name || "Item name not available"}</h3>
         <p>{price ? `₹ ${price / 100}` : "Price not available"}</p>
-        <div className={`veg-symbol ${vegClass}`} />
+        {/* <div className={`veg-symbol ${vegClass}`} /> */}
 
         <button>Add to Cart</button>
       </div>

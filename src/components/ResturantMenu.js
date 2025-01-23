@@ -64,21 +64,25 @@ const ResturantMenu = () => {
         <p>{cuisines}</p>
       </div>
 
-      {/* Top Picks Section */}
-      <div className="top-picks">
-        <h2>{filterItems.category}</h2>
+      <div>
         {/* Filter Buttons */}
         <div className="filter-buttons">
           <button onClick={() => filterItems("")}>All</button>
           <button onClick={() => filterItems("veg")}>Veg</button>
           <button onClick={() => filterItems("non-veg")}>Non-Veg</button>
         </div>
+        <h2>
+          {
+            resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.title
+          }
+        </h2>
         <div className="menu-items">
           {filteredItems.length === 0 ? (
             <p>No items available</p>
           ) : (
             filteredItems.map((item) => {
-              return <MenuItem key={resMenu?.info?.id} item={item} />;
+              return <MenuItem key={item.card.info?.id} item={item} />;
             })
           )}
         </div>

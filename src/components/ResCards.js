@@ -16,4 +16,17 @@ const ResCards = ({ resName }) => {
   );
 };
 
+// creating a higher order component
+
+export const withpromo = (ResCards) => {
+  return () => {
+    return (
+      <div>
+        <label>promoted</label>
+        <ResCards />
+      </div>
+    );
+  };
+};
+
 export default ResCards;

@@ -2,9 +2,9 @@ import User from "./User";
 
 const About = () => {
   return (
-    <div>
-      <h1>helloe from about</h1>
-      <User name={"name"} location={"pune"} />
+    <div className="about-dev">
+      <h1>About developer</h1>
+      <User />
     </div>
   );
 };

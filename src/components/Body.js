@@ -1,8 +1,8 @@
-import ResCards from "./ResCards";
-// import resList from "../utils/mockData";
+import ResCards, { withpromo } from "./ResCards";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // a local state variable
@@ -11,6 +11,7 @@ const Body = () => {
   const [filterRes, setfilter] = useState("");
 
   const [searchText, setSearch] = useState("");
+  // const restwithPromo = withpromo(ResCards);
 
   useEffect(() => {
     fetchData();
@@ -22,6 +23,7 @@ const Body = () => {
     );
 
     const json = await data.json();
+    // console.log(json);
     setList(
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -30,6 +32,8 @@ const Body = () => {
     );
   };
 
+  const onlinestatus = useOnlineStatus();
+  if (onlinestatus == false) return <h1>check your internet please</h1>;
   return listOFres.length === 0 ? (
     <Shimmer />
   ) : (
