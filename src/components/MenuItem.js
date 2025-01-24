@@ -1,11 +1,15 @@
 import React from "react";
 import { MENU_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice";
 
 const MenuItem = ({ item, addToCart }) => {
   const { name, price, imageId, itemAttribute, id } = item.card.info; // Extract id
   const vegClassifier = itemAttribute?.vegClassifier;
-  const vegClass = vegClassifier === "VEG" ? "veg" : "non-veg";
-
+  const dispatch = useDispatch();
+  const handelitem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div className="menu-item">
       {imageId && (
@@ -16,7 +20,7 @@ const MenuItem = ({ item, addToCart }) => {
         <p>{price ? `₹ ${price / 100}` : "Price not available"}</p>
         {/* <div className={`veg-symbol ${vegClass}`} /> */}
 
-        <button>Add to Cart</button>
+        <button onClick={() => handelitem(item)}>Add to Cart</button>
       </div>
     </div>
   );

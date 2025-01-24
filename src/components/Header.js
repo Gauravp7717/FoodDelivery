@@ -2,10 +2,13 @@ import { useState } from "react";
 import { LOGO } from "../utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setName] = useState("Log-in");
   const onlineStatus = useOnlineStatus();
+  const cartitems = useSelector((store) => store.cart.items);
+  // console.log(cartitems);
 
   return (
     <div className="header">
@@ -34,7 +37,7 @@ const Header = () => {
           </li>
           <li>
             <Link className="underline" to="/cart">
-              Cart
+              Cart ({cartitems.length})
             </Link>
           </li>
           <button
@@ -42,7 +45,6 @@ const Header = () => {
             onClick={() => {
               // const btnFetch = "logout";
               btnName == "Log-in" ? setName("Logout") : setName("Log-in");
-              console.log(btnName);
             }}
           >
             {btnName}

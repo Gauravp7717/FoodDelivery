@@ -10,7 +10,7 @@ const User = () => {
   const fetchUserData = async () => {
     const data = await fetch("https://api.github.com/users/Gauravp7717");
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setUserData(json);
   };
 
