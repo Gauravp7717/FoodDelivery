@@ -6,18 +6,23 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setName] = useState("Log-in");
+  const [menuOpen, setMenuOpen] = useState(false); // State for toggling the menu
   const onlineStatus = useOnlineStatus();
   const cartitems = useSelector((store) => store.cart.items);
-  // console.log(cartitems);
 
   return (
     <div className="header">
       <div className="logo-container">
         <div className="logo">
-          <img src={LOGO}></img>
+          <img src={LOGO} alt="Logo" />
         </div>
       </div>
-      <div className="nav-items">
+      {/* Hamburger Menu Icon */}
+      <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? "✖" : "☰"}
+      </div>
+      {/* Navigation Items */}
+      <div className={`nav-items ${menuOpen ? "open" : ""}`}>
         <ul>
           <li>Online status: {onlineStatus ? "💚" : "❤️"}</li>
           <li>
@@ -42,10 +47,9 @@ const Header = () => {
           </li>
           <button
             className="log-btn"
-            onClick={() => {
-              // const btnFetch = "logout";
-              btnName == "Log-in" ? setName("Logout") : setName("Log-in");
-            }}
+            onClick={() =>
+              btnName === "Log-in" ? setName("Logout") : setName("Log-in")
+            }
           >
             {btnName}
           </button>
