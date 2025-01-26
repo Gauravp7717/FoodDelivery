@@ -18,18 +18,31 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5807719&lng=73.9787063&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const apiUrl =
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5807719&lng=73.9787063&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-    const json = await data.json();
-    // console.log(json);
-    setList(
-      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setfilter(
-      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    try {
+      const data = await fetch(proxyUrl + apiUrl, {
+        method: "GET",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer <YOUR_API_KEY>", // If required by CORS Anywhere
+        },
+      });
+
+      const json = await data.json();
+      setList(
+        json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setfilter(
+        json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const onlinestatus = useOnlineStatus();
